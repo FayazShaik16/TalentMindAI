@@ -38,10 +38,10 @@ Preferred: Experience with startup product iterations and mentorship of mid-leve
   }
 ];
 
-let BACKEND_URL = "https://talentmind-backend.onrender.com";
+let BACKEND_URL = "https://fayazshaik-talentmind-backend.hf.space";
 if (typeof window !== 'undefined') {
   const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  BACKEND_URL = isLocal ? "http://localhost:8000" : "https://talentmind-backend.onrender.com";
+  BACKEND_URL = isLocal ? "http://localhost:8000" : "https://fayazshaik-talentmind-backend.hf.space";
 }
 
 

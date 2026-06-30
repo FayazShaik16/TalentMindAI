@@ -41,15 +41,7 @@ Preferred: Experience with startup product iterations and mentorship of mid-leve
 let BACKEND_URL = "https://talentmind-backend.onrender.com";
 if (typeof window !== 'undefined') {
   const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const defaultUrl = isLocal ? "http://localhost:8000" : "https://talentmind-backend.onrender.com";
-  
-  let saved = localStorage.getItem('TALENTMIND_BACKEND_URL');
-  if (saved && !isLocal && (saved.includes('localhost') || saved.includes('127.0.0.1'))) {
-    localStorage.removeItem('TALENTMIND_BACKEND_URL');
-    saved = null;
-  }
-  
-  BACKEND_URL = saved || process.env.NEXT_PUBLIC_API_URL || defaultUrl;
+  BACKEND_URL = isLocal ? "http://localhost:8000" : "https://talentmind-backend.onrender.com";
 }
 
 
@@ -82,13 +74,7 @@ const PIPELINE_STAGES = [
 export default function ToolsWorkspace() {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'dataset-management' | 'new-session' | 'jobs' | 'rankings' | 'candidates' | 'comparison' | 'analytics' | 'copilot' | 'health' | 'settings'>('dashboard');
   
-  const [backendUrlInput, setBackendUrlInput] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('TALENTMIND_BACKEND_URL') || "http://localhost:8000";
-    }
-    return "http://localhost:8000";
-  });
-  
+
   // Platform States
   const [jobs, setJobs] = useState<any[]>([]);
   const [selectedJobId, setSelectedJobId] = useState<string>("");
@@ -2721,34 +2707,6 @@ export default function ToolsWorkspace() {
                     ))}
                   </div>
 
-                  {/* Backend API Configuration */}
-                  <div className="pt-6 border-t border-white/[0.06] space-y-4">
-                    <div>
-                      <h4 className="text-sm font-bold text-white">Backend API URL Connection</h4>
-                      <p className="text-xs text-slate-400 mt-1">Point the user interface to your running FastAPI backend engine. Useful when deploying previews.</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <input 
-                        type="text" 
-                        value={backendUrlInput}
-                        onChange={(e) => setBackendUrlInput(e.target.value)}
-                        placeholder="http://localhost:8000"
-                        className="flex-1 bg-brand-gray border border-white/[0.08] text-white text-xs rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-blue"
-                      />
-                      <button 
-                        onClick={() => {
-                          if (backendUrlInput.trim()) {
-                            localStorage.setItem('TALENTMIND_BACKEND_URL', backendUrlInput.trim());
-                            alert("Backend API URL updated successfully. Please reload the page to apply.");
-                            window.location.reload();
-                          }
-                        }}
-                        className="rounded-xl bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] px-4 py-2.5 text-xs font-semibold text-white transition-all font-mono"
-                      >
-                        Apply URL
-                      </button>
-                    </div>
-                  </div>
 
                   <div className="pt-4 border-t border-white/[0.06] flex justify-end">
                     <button 

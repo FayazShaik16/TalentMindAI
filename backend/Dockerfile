@@ -27,7 +27,8 @@ ENV PYTHONUNBUFFERED=1
 
 # Create secure system user
 RUN groupadd -g 10001 talentmind && \
-    useradd -u 10001 -g talentmind -m -s /bin/bash talentmind
+    useradd -u 10001 -g talentmind -m -s /bin/bash talentmind && \
+    chown -R talentmind:talentmind /app
 
 # Copy virtual environment and files
 COPY --from=builder /opt/venv /opt/venv

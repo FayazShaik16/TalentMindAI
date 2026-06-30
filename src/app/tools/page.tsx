@@ -437,6 +437,22 @@ export default function ToolsWorkspace() {
     }
   }, [messages]);
 
+  // Auto-clear database on session end (closing tab or leaving tools page)
+  useEffect(() => {
+    const handleUnload = () => {
+      // Use keepalive fetch to ensure the request is completed after the tab closes
+      fetch(`${BACKEND_URL}/dataset/reset`, {
+        method: "DELETE",
+        keepalive: true
+      }).catch(err => console.error("Auto-reset failed", err));
+    };
+
+    window.addEventListener("unload", handleUnload);
+    return () => {
+      window.removeEventListener("unload", handleUnload);
+    };
+  }, []);
+
   // Execute pipeline matcher
   const handleRunPipeline = async () => {
     if (!jdText.trim()) {
@@ -988,7 +1004,13 @@ export default function ToolsWorkspace() {
             <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-xs text-slate-400 font-medium">Recruitment Engine Online</span>
           </div>
-          <Link href="/" className="block text-center text-xs text-slate-500 hover:text-slate-300">
+          <Link 
+            href="/" 
+            onClick={() => {
+              fetch(`${BACKEND_URL}/dataset/reset`, { method: "DELETE" }).catch(() => {});
+            }}
+            className="block text-center text-xs text-slate-500 hover:text-slate-300"
+          >
             Back to Story Landing Page
           </Link>
         </div>

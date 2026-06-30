@@ -38,9 +38,11 @@ Preferred: Experience with startup product iterations and mentorship of mid-leve
   }
 ];
 
-let BACKEND_URL = "http://localhost:8000";
+let BACKEND_URL = "https://talentmind-backend.onrender.com";
 if (typeof window !== 'undefined') {
-  BACKEND_URL = localStorage.getItem('TALENTMIND_BACKEND_URL') || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const defaultUrl = isLocal ? "http://localhost:8000" : "https://talentmind-backend.onrender.com";
+  BACKEND_URL = localStorage.getItem('TALENTMIND_BACKEND_URL') || process.env.NEXT_PUBLIC_API_URL || defaultUrl;
 }
 
 

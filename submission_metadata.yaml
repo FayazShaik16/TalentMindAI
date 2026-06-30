@@ -1,23 +1,17 @@
-# Redrob Hackathon — Submission Metadata Template
-#
-# Copy this file to your repo root as `submission_metadata.yaml` and fill it in.
-# The fields here should match what you submit via the portal at upload time.
-# Stage 3 review uses this file to verify your portal metadata.
-
 # ============================================================================
 # Team identity
 # ============================================================================
-team_name: "NovaRift"  # Used in leaderboard and announcements
+team_name: "NovaRift" 
 
 primary_contact:
   name: "Fayaz Sadiq Shaik"
-  email: "fayazeduonline@gmail.com"   # Used for all organizer communication
-  phone: "+91-7658955085"        # Used for top-50 / top-10 outreach
+  email: "fayazeduonline@gmail.com"   
+  phone: "+91-7658955085"        
 
 team_members:
   - name: "Fayaz Sadiq Shaik"
     email: "fayazeduonline@gmail.com"
-    role: "Team Lead"          # Optional, e.g. "Team Lead", "Backend", "Data"
+    role: "Team Lead"          
   - name: "Manyam Suchitra"
     email: "suchitramanyam2006@gmail.com"
     role: "Data Engineer"
@@ -27,49 +21,42 @@ team_members:
   - name: "SAI SANTOSH KUMAR BARIGEDI"
     email: "barigedisaisantoshkumar@gmail.com"
     role: "UI/UX Designer"
-  # Add more members as needed; solo participants list just one member
+
 
 # ============================================================================
 # Code and reproducibility
 # ============================================================================
 github_repo: "https://github.com/FayazShaik16/TalentMindAI"
-# Required. Must be reachable. Private repos OK if you can grant organizer
-# access at Stage 3 (the email to add will be communicated then).
+
 
 sandbox_link: "https://huggingface.co/spaces/FayazShaik/talentmind-backend"
-# Required. A working hosted environment where the ranker can be run on a small
-# candidate sample. See Section 10.5 of submission_spec.md for acceptable
-# platforms (HuggingFace Spaces, Streamlit Cloud, Replit, Colab, Docker, Binder).
 
-reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
-# The single command that produces submission.csv from candidates.jsonl.
-# Should run end-to-end within 5 minutes on CPU with 16GB RAM and no network.
+
+
+
 
 # ============================================================================
 # Compute environment
 # ============================================================================
 compute:
-  platform: "Local Windows OS"                  # Or: "AWS EC2 c5.4xlarge", "Local Linux box", etc.
-  cpu_cores: 8                                  # Number of CPU cores used
-  ram_gb: 16                                    # Available RAM in GB
-  python_version: "3.11.4"                      # python --version
-  os: "Windows 11"                              # Or "Ubuntu 22.04 LTS", etc.
-  uses_gpu_for_inference: false                 # Must be false — see compute constraints
-  has_network_during_ranking: false             # Must be false — no API calls during ranking
-  pre_computation_required: false               # true if you pre-compute embeddings or train models offline
-  pre_computation_time_minutes: 0               # Approximate, if applicable
+  platform: "Local Windows OS"                 
+  cpu_cores: 8                                  
+  ram_gb: 16                                  
+  python_version: "3.11.4"                     
+  os: "Windows 11"                             
+  uses_gpu_for_inference: false                
+  has_network_during_ranking: false             
+  pre_computation_required: false              
+  pre_computation_time_minutes: 0               
 
 # ============================================================================
 # AI tools declaration
 # ============================================================================
-# Transparency only — declared use is NOT penalized. Be honest. Stage 5 interview
-# may verify these declarations against your code; declarations that contradict
-# your code or your interview are flagged.
+
 ai_tools_used:
-  - "Gemini"        # e.g. for architecture discussion, code review
-  - "Claude"
-  - "GitHub Copilot"  # e.g. for autocomplete
-  # Other options: "ChatGPT", "Cursor", "Gemini", "Codeium", "Other", "None"
+  - "AntiGravity"        
+  - "ChatGPT"
+  - "Claude"  
 
 ai_usage_summary: |
   Used Claude for architectural discussions and initial code structure advice. 
@@ -78,7 +65,7 @@ ai_usage_summary: |
   to any external LLM during execution.
 
 # ============================================================================
-# Approach summary (optional but recommended)
+# Approach summary 
 # ============================================================================
 methodology_summary: |
   A robust multi-agent recruiting intelligence system and hybrid ranking engine. 
@@ -92,8 +79,8 @@ methodology_summary: |
 # Declarations
 # ============================================================================
 declarations:
-  read_submission_spec: true        # I have read submission_spec.md in full
-  code_is_original_work: true       # My code is my team's original work (using AI as a tool is fine)
-  no_collusion: true                # I have not coordinated my submission with other teams
-  honeypot_check_done: true         # OPTIONAL — set true if you explicitly checked for honeypots in your ranking
-  reproduction_tested: true         # I have tested that my reproduction_command runs end-to-end
+  read_submission_spec: true        
+  code_is_original_work: true      
+  no_collusion: true               
+  honeypot_check_done: true        
+  reproduction_tested: true        

@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+build
+backend/.venv
+backend/.pytest_cache
+backend/.cache
+backend/.embeddings_cache
+backend/talentmind.db
+.git
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+.github
+*.log

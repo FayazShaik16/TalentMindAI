@@ -1,0 +1,34 @@
+# Node build cache and packages
+node_modules/
+.next/
+tsconfig.tsbuildinfo
+
+# Python virtual environment
+backend/.venv/
+.venv/
+__pycache__/
+*.pyc
+
+# SQLite databases, WAL files, and caches
+backend/talentmind.db
+backend/talentmind.db-shm
+backend/talentmind.db-wal
+backend/exports/
+backend/uploads/
+backend/.embeddings_cache/
+backend/.cache/
+backend/vector_indices/
+backend/.pytest_cache/
+*.db
+*.db-wal
+*.db-shm
+*.log
+
+# Exclude backend pyproject.toml to force requirements.txt installation on Vercel
+backend/pyproject.toml
+backend/poetry.lock
+
+# Generated reports
+*.csv
+*.xlsx
+*.pdf

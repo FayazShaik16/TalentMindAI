@@ -1,13 +1,7 @@
-# Redrob Hackathon — Submission Metadata Template
-#
-# Copy this file to your repo root as `submission_metadata.yaml` and fill it in.
-# The fields here should match what you submit via the portal at upload time.
-# Stage 3 review uses this file to verify your portal metadata.
-
 # ============================================================================
 # Team identity
 # ============================================================================
-team_name: "NovaRift"  # Used in leaderboard and announcements
+team_name: "NovaRift" 
 
 primary_contact:
   name: "Fayaz Sadiq Shaik"
@@ -17,7 +11,7 @@ primary_contact:
 team_members:
   - name: "Fayaz Sadiq Shaik"
     email: "fayazeduonline@gmail.com"
-    role: "Team Lead"          # Optional, e.g. "Team Lead", "Backend", "Data"
+    role: "Team Lead"          
   - name: "Manyam Suchitra"
     email: "suchitramanyam2006@gmail.com"
     role: "Data Engineer"
@@ -27,23 +21,19 @@ team_members:
   - name: "SAI SANTOSH KUMAR BARIGEDI"
     email: "barigedisaisantoshkumar@gmail.com"
     role: "UI/UX Designer"
-  # Add more members as needed; solo participants list just one member
+
 
 # ============================================================================
 # Code and reproducibility
 # ============================================================================
 github_repo: "https://github.com/FayazShaik16/TalentMindAI"
-# Required. Must be reachable. Private repos OK if you can grant organizer
-# access at Stage 3 (the email to add will be communicated then).
+
 
 sandbox_link: "https://huggingface.co/spaces/FayazShaik/talentmind-backend"
-# Required. A working hosted environment where the ranker can be run on a small
-# candidate sample. See Section 10.5 of submission_spec.md for acceptable
-# platforms (HuggingFace Spaces, Streamlit Cloud, Replit, Colab, Docker, Binder).
 
-reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
-# The single command that produces submission.csv from candidates.jsonl.
-# Should run end-to-end within 5 minutes on CPU with 16GB RAM and no network.
+
+
+
 
 # ============================================================================
 # Compute environment
@@ -62,14 +52,11 @@ compute:
 # ============================================================================
 # AI tools declaration
 # ============================================================================
-# Transparency only — declared use is NOT penalized. Be honest. Stage 5 interview
-# may verify these declarations against your code; declarations that contradict
-# your code or your interview are flagged.
+
 ai_tools_used:
-  - "Gemini"        # e.g. for architecture discussion, code review
-  - "Claude"
-  - "GitHub Copilot"  # e.g. for autocomplete
-  # Other options: "ChatGPT", "Cursor", "Gemini", "Codeium", "Other", "None"
+  - "AntiGravity"        
+  - "ChatGPT"
+  - "Claude"  
 
 ai_usage_summary: |
   Used Claude for architectural discussions and initial code structure advice. 

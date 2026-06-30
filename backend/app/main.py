@@ -24,6 +24,16 @@ import app.services.agents.explainability_agent
 async def lifespan(app: FastAPI):
     # Startup log parameters
     logger.info("app_starting")
+    
+    from app.database.session import is_sqlite, engine
+    if is_sqlite:
+        logger.info("sqlite_detected_initializing_database")
+        from app.database.models.base import Base
+        from app.database.models import candidate, candidate_evidence, candidate_intelligence, explanation, hiring_session, job
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        logger.info("sqlite_database_initialized_successfully")
+
     logger.info(
         "loaded_configuration",
         env=settings.APP_ENV,

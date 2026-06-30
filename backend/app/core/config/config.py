@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     APP_DEBUG: bool = True
     APP_SECRET_KEY: str = "default-development-secret-key-change-it"
 
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/talentmind"
+    DATABASE_URL: str = ""
     SQLITE_DATABASE_URL: str = "sqlite+aiosqlite:///./talentmind.db"
     REDIS_URL: str = "redis://localhost:6379/0"
 

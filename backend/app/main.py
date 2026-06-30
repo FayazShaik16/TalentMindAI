@@ -29,7 +29,7 @@ async def lifespan(app: FastAPI):
     if is_sqlite:
         logger.info("sqlite_detected_initializing_database")
         from app.database.models.base import Base
-        from app.database.models import candidate, candidate_evidence, candidate_intelligence, explanation, hiring_session, job
+        from app.database.models import candidate, candidate_evidence, candidate_intelligence, dataset_management, explanation, job, ranking, workspace
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
         logger.info("sqlite_database_initialized_successfully")

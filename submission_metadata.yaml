@@ -5,8 +5,8 @@ team_name: "NovaRift"
 
 primary_contact:
   name: "Fayaz Sadiq Shaik"
-  email: "fayazeduonline@gmail.com"   # Used for all organizer communication
-  phone: "+91-7658955085"        # Used for top-50 / top-10 outreach
+  email: "fayazeduonline@gmail.com"   
+  phone: "+91-7658955085"        
 
 team_members:
   - name: "Fayaz Sadiq Shaik"
@@ -39,15 +39,15 @@ sandbox_link: "https://huggingface.co/spaces/FayazShaik/talentmind-backend"
 # Compute environment
 # ============================================================================
 compute:
-  platform: "Local Windows OS"                  # Or: "AWS EC2 c5.4xlarge", "Local Linux box", etc.
-  cpu_cores: 8                                  # Number of CPU cores used
-  ram_gb: 16                                    # Available RAM in GB
-  python_version: "3.11.4"                      # python --version
-  os: "Windows 11"                              # Or "Ubuntu 22.04 LTS", etc.
-  uses_gpu_for_inference: false                 # Must be false — see compute constraints
-  has_network_during_ranking: false             # Must be false — no API calls during ranking
-  pre_computation_required: false               # true if you pre-compute embeddings or train models offline
-  pre_computation_time_minutes: 0               # Approximate, if applicable
+  platform: "Local Windows OS"                 
+  cpu_cores: 8                                  
+  ram_gb: 16                                  
+  python_version: "3.11.4"                     
+  os: "Windows 11"                             
+  uses_gpu_for_inference: false                
+  has_network_during_ranking: false             
+  pre_computation_required: false              
+  pre_computation_time_minutes: 0               
 
 # ============================================================================
 # AI tools declaration
@@ -65,7 +65,7 @@ ai_usage_summary: |
   to any external LLM during execution.
 
 # ============================================================================
-# Approach summary (optional but recommended)
+# Approach summary 
 # ============================================================================
 methodology_summary: |
   A robust multi-agent recruiting intelligence system and hybrid ranking engine. 
@@ -79,8 +79,8 @@ methodology_summary: |
 # Declarations
 # ============================================================================
 declarations:
-  read_submission_spec: true        # I have read submission_spec.md in full
-  code_is_original_work: true       # My code is my team's original work (using AI as a tool is fine)
-  no_collusion: true                # I have not coordinated my submission with other teams
-  honeypot_check_done: true         # OPTIONAL — set true if you explicitly checked for honeypots in your ranking
-  reproduction_tested: true         # I have tested that my reproduction_command runs end-to-end
+  read_submission_spec: true        
+  code_is_original_work: true      
+  no_collusion: true               
+  honeypot_check_done: true        
+  reproduction_tested: true        

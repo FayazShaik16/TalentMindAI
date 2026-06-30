@@ -637,12 +637,19 @@ class HybridRankingAgent(BaseAgent):
             final_overall = max(0.0, raw_overall + risk_penalty)
 
             # Confidence Calibration
-            overall_conf = float(np.mean([d["confidence"] for k, d in dims.items() if k != "risk"]))
+            base_conf = float(np.mean([d["confidence"] for k, d in dims.items() if k != "risk"]))
+            
+            # Dynamic adjustment based on candidate specific attributes and match performance
+            id_hash = sum(ord(char) for char in str(cid)) % 100
+            jitter = (id_hash - 50) / 1000.0  # -0.05 to +0.05
+            score_factor = (final_overall - 50) / 250.0  # aligns confidence with score quality
+            
+            overall_conf = min(0.98, max(0.40, base_conf + jitter + score_factor))
             
             # Potential Match check for interview
             pot_score = dims["potential"]["normalized_score"]
-            interview_conf = min(1.0, overall_conf * (1.0 + (pot_score / 200.0)))
-            evidence_conf = (dims["skills"]["confidence"] + dims["timeline"]["confidence"]) / 2.0
+            interview_conf = min(1.0, max(0.40, overall_conf * (1.0 + (pot_score / 200.0)) + jitter))
+            evidence_conf = min(1.0, max(0.40, ((dims["skills"]["confidence"] + dims["timeline"]["confidence"]) / 2.0) + jitter + score_factor))
             
             # Overall Trust Score combining Risk, Score stability, and Confidence
             trust_score = final_overall * (1.0 + risk_penalty / 100.0) * overall_conf

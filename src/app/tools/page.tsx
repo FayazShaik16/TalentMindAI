@@ -476,10 +476,12 @@ export default function ToolsWorkspace() {
       }
     }, stageDuration);
 
+    const targetCount = candTotalCount || allDbCandidates.length || 50;
     const candidateInterval = setInterval(() => {
       setProcessedCandidatesCount(prev => {
-        if (prev >= 100000) return 100000;
-        return prev + Math.floor(Math.random() * 5000) + 1000;
+        if (prev >= targetCount) return targetCount;
+        const step = Math.max(1, Math.floor(targetCount / 10));
+        return Math.min(targetCount, prev + Math.floor(Math.random() * step) + 1);
       });
     }, 150);
     
@@ -521,7 +523,7 @@ export default function ToolsWorkspace() {
       setPipelineStage(PIPELINE_STAGES.length);
       setPipelineProgress(100);
       setEstTimeRemaining(0);
-      setProcessedCandidatesCount(100000);
+      setProcessedCandidatesCount(candTotalCount || allDbCandidates.length || 50);
       
       // Delay slightly for premium feel
       setTimeout(() => {
@@ -545,15 +547,22 @@ export default function ToolsWorkspace() {
     setIsReviewingIntent(false);
     setIsSearchingCandidates(true);
     
+    const targetCount = candTotalCount || allDbCandidates.length || 50;
+    const stepSemantic = Math.max(1, Math.floor(targetCount / 8));
+    const stepSkills = Math.max(1, Math.floor(targetCount / 7));
+    const stepExperience = Math.max(1, Math.floor(targetCount / 6));
+    const stepRanking = Math.max(1, Math.floor(targetCount / 5));
+    const stepConfidence = Math.max(1, Math.floor(targetCount / 4));
+
     // Simulate candidate search counter tick-ups
     const searchInt = setInterval(() => {
       setSearchCounters(prev => {
         const next = { ...prev };
-        next.semantic = Math.min(100000, next.semantic + Math.floor(Math.random() * 8000) + 2000);
-        next.skills = Math.min(100000, next.skills + Math.floor(Math.random() * 9000) + 3000);
-        next.experience = Math.min(100000, next.experience + Math.floor(Math.random() * 10000) + 4000);
-        next.ranking = Math.min(100000, next.ranking + Math.floor(Math.random() * 12000) + 5000);
-        next.confidence = Math.min(100000, next.confidence + Math.floor(Math.random() * 15000) + 6000);
+        next.semantic = Math.min(targetCount, next.semantic + Math.floor(Math.random() * stepSemantic) + 1);
+        next.skills = Math.min(targetCount, next.skills + Math.floor(Math.random() * stepSkills) + 1);
+        next.experience = Math.min(targetCount, next.experience + Math.floor(Math.random() * stepExperience) + 1);
+        next.ranking = Math.min(targetCount, next.ranking + Math.floor(Math.random() * stepRanking) + 1);
+        next.confidence = Math.min(targetCount, next.confidence + Math.floor(Math.random() * stepConfidence) + 1);
         return next;
       });
     }, 100);
@@ -570,11 +579,11 @@ export default function ToolsWorkspace() {
 
       clearInterval(searchInt);
       setSearchCounters({
-        semantic: 100000,
-        skills: 100000,
-        experience: 100000,
-        ranking: 100000,
-        confidence: 100000
+        semantic: targetCount,
+        skills: targetCount,
+        experience: targetCount,
+        ranking: targetCount,
+        confidence: targetCount
       });
 
       setTimeout(async () => {
@@ -878,6 +887,8 @@ export default function ToolsWorkspace() {
     }
   };
 
+  const displayCount = candTotalCount || allDbCandidates.length || 50;
+
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-brand-black text-slate-100 font-sans antialiased">
       {/* 1. Left Sidebar Navigation */}
@@ -1101,30 +1112,30 @@ export default function ToolsWorkspace() {
                     <div className="absolute inset-0 rounded-full bg-brand-purple/20 blur-xl animate-pulse" />
                     <Sparkles className="h-14 w-14 text-brand-purple animate-bounce relative z-10" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">Searching 100,000 Candidates...</h3>
+                  <h3 className="text-xl font-bold text-white">Searching {displayCount.toLocaleString()} Candidates...</h3>
                   <p className="text-slate-400 text-xs">Matching recruiter requirements against technical, professional, and career timeline databases.</p>
                   
                   {/* Processing Sub-Counters */}
                   <div className="space-y-3 bg-white/[0.02] border border-white/[0.06] p-6 rounded-2xl text-left text-xs font-mono">
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Semantic Matching Scan</span>
-                      <span className="text-white font-bold">{searchCounters.semantic.toLocaleString()} / 100,000</span>
+                      <span className="text-white font-bold">{searchCounters.semantic.toLocaleString()} / {displayCount.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Skill Profiling Check</span>
-                      <span className="text-white font-bold">{searchCounters.skills.toLocaleString()} / 100,000</span>
+                      <span className="text-white font-bold">{searchCounters.skills.toLocaleString()} / {displayCount.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Experience Alignment</span>
-                      <span className="text-white font-bold">{searchCounters.experience.toLocaleString()} / 100,000</span>
+                      <span className="text-white font-bold">{searchCounters.experience.toLocaleString()} / {displayCount.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Decision Index Ranking</span>
-                      <span className="text-white font-bold">{searchCounters.ranking.toLocaleString()} / 100,000</span>
+                      <span className="text-white font-bold">{searchCounters.ranking.toLocaleString()} / {displayCount.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Confidence Calculation</span>
-                      <span className="text-white font-bold">{searchCounters.confidence.toLocaleString()} / 100,000</span>
+                      <span className="text-white font-bold">{searchCounters.confidence.toLocaleString()} / {displayCount.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>

@@ -930,7 +930,7 @@ export default function ToolsWorkspace() {
               className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeTab === 'dataset-management' ? 'bg-white/[0.06] text-white shadow-inner border border-white/[0.05]' : 'text-slate-400 hover:text-white hover:bg-white/[0.02]'}`}
             >
               <FolderOpen className="h-4 w-4 text-brand-cyan" />
-              Add/Manage Candidate Database
+              Manage Database
             </button>
             <button 
               onClick={() => { setActiveTab('new-session'); }}

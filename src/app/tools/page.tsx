@@ -42,7 +42,14 @@ let BACKEND_URL = "https://talentmind-backend.onrender.com";
 if (typeof window !== 'undefined') {
   const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   const defaultUrl = isLocal ? "http://localhost:8000" : "https://talentmind-backend.onrender.com";
-  BACKEND_URL = localStorage.getItem('TALENTMIND_BACKEND_URL') || process.env.NEXT_PUBLIC_API_URL || defaultUrl;
+  
+  let saved = localStorage.getItem('TALENTMIND_BACKEND_URL');
+  if (saved && !isLocal && (saved.includes('localhost') || saved.includes('127.0.0.1'))) {
+    localStorage.removeItem('TALENTMIND_BACKEND_URL');
+    saved = null;
+  }
+  
+  BACKEND_URL = saved || process.env.NEXT_PUBLIC_API_URL || defaultUrl;
 }
 
 
